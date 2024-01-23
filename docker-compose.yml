@@ -2,10 +2,10 @@ version: '3.8'
 services:
   dynamodb-local:
 #    Uncomment if data should be persisted between container restarts
-#    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
-#    volumes:
-#      - "./docker/dynamodb:/home/dynamodblocal/data"
-    command: "-jar DynamoDBLocal.jar -sharedDb -inMemory"
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    volumes:
+      - "./docker/dynamodb:/home/dynamodblocal/data"
+    # command: "-jar DynamoDBLocal.jar -sharedDb -inMemory"
     image: "amazon/dynamodb-local:latest"
     container_name: dynamodb-local
     ports:

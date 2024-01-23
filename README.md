@@ -43,7 +43,7 @@ poetry install
 
 This will load the data in `test/data` into the local dynamo db instance.
 ```bash
-python tests/load_data_local.py
+poetry run python tests/load_data_local.py
 ```
 
 **NOTE** - By default data will be removed when the container is stopped. There are some commented lines in `docker-compose.yml`
@@ -60,11 +60,11 @@ curl --location 'http://localhost:9000/2015-03-31/functions/function/invocations
 --data '{
     "body":{
         "feature": "Reach",
-        "reach_id": "71224100223",
-        "start_time": "2022-08-04T00:00:00+00:00",
-        "end_time": "2022-08-23T00:00:00+00:00",
+        "feature_id": "71349000323",
+        "start_time": "2023-06-10T00:00:00+00:00",
+        "end_time": "2023-06-11T00:00:00+00:00",
         "output": "csv",
-        "fields": "feature_id,time_str,wse"
+        "fields": "feature_id,time_str,wse,geometry"
     }
 }'
 ```
