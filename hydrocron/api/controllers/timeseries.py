@@ -175,7 +175,14 @@ def format_csv(feature_lower, results: Generator, feature_id, fields):  # noqa: 
 def lambda_handler(event, context):  # noqa: E501 # pylint: disable=W0613
     """
     This function queries the database for relevant results
+    also allows all origins for cors
     """
+    # Add CORS headers
+    headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+    }
 
     feature = event['body']['feature']
     feature_id = event['body']['feature_id']
@@ -191,4 +198,8 @@ def lambda_handler(event, context):  # noqa: E501 # pylint: disable=W0613
     data = {'status': "200 OK", 'time': elapsed_time, 'hits': hits, 'results': {'csv': "", 'geojson': {}}}
     data['results'][event['body']['output']] = results
 
-    return data
+    return {
+        'statusCode': 200,
+        'headers': headers,
+        'body': data
+    }
