@@ -67,6 +67,19 @@ curl --location 'http://localhost:9000/2015-03-31/functions/function/invocations
         "fields": "feature_id,time_str,wse,geometry"
     }
 }'
+
+curl --location 'http://localhost:9000/2015-03-31/functions/function/invocations' \
+--header 'Content-Type: application/json' \
+--data '{
+    "body":{
+        "feature": "Node",
+        "node_id": "45243800160011",
+        "start_time": "2023-06-02T00:00:00+00:00",
+        "end_time": "2023-06-03T00:00:00+00:00",
+        "output": "csv",
+        "fields": "feature_id,time_str,wse,geometry"
+    }
+}'
 ```
 
 ## Loading the Database from CMR
